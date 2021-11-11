@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
 
     public void StopFiring()
     {
-        StartCoroutine("TryAttack");
+        StopCoroutine("TryAttack");
     }
 
     private IEnumerator TryAttack()

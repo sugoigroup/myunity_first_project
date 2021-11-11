@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 1173117201287500600}
   - component: {fileID: 1173117201287500601}
   - component: {fileID: 1173117201287500602}
+  - component: {fileID: -5334984659564750525}
+  - component: {fileID: 277982111407593504}
+  - component: {fileID: -2259366517754387687}
+  - component: {fileID: -5970763111722518529}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -97,3 +101,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   moveDirection: {x: 0, y: 1, z: 0}
+--- !u!58 &-5334984659564750525
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173117201287500603}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
+--- !u!50 &277982111407593504
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173117201287500603}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-2259366517754387687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173117201287500603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 946c3d45b2aef446cac309d6c4d10def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5970763111722518529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173117201287500603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4f8d2f9705d42a4b457881dda5a5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageData: {fileID: 11400000, guid: a89a3bc51e06540cda4b7e81f5092be5, type: 2}

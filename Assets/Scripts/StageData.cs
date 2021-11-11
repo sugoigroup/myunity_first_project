@@ -5,7 +5,7 @@ using System.Collections;
 public class StageData : ScriptableObject
 {
     [SerializeField]
-    private Vector2 limitMin;
+     private Vector2 limitMin;
     [SerializeField]
     private Vector2 limitMax;
 
