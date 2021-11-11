@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     private int score;
     [SerializeField] private string nextSceneName;
 
+    private bool isDie = false;
+    private Animator animator;
+
     public int Score
     {
         set => score = Mathf.Max(0, value);
@@ -26,11 +29,14 @@ public class PlayerController : MonoBehaviour
     {
         movement2D = GetComponent<Movement2D>();
         weapon = GetComponent<Weapon>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDie) return;
+        
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
@@ -56,6 +62,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnDie()
     {
+        movement2D.MoveTo(Vector3.zero);
+        animator.SetTrigger("onDie");
+        Destroy(GetComponent<CircleCollider2D>());
+        isDie = true;
+    }
+
+    public void OnDieEvent()
+    {
+        PlayerPrefs.SetInt("Score", score);
         SceneManager.LoadScene(nextSceneName);
     }
 }

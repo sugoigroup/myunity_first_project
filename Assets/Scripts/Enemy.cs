@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int scorePoint = 100;
     private PlayerController playerController;
 
+    [SerializeField] private GameObject explosionPrefab;
+
     private void Awake()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -25,7 +27,8 @@ public class Enemy : MonoBehaviour
 
     public void OnDie()
     {
-        playerController.Score += scorePoint;
+                playerController.Score += scorePoint;
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
