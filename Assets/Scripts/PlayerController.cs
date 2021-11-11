@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +12,15 @@ public class PlayerController : MonoBehaviour
 
     private Movement2D movement2D;
     private Weapon weapon;
+
+    private int score;
+    [SerializeField] private string nextSceneName;
+
+    public int Score
+    {
+        set => score = Mathf.Max(0, value);
+        get => score;
+    }
 
     private void Awake()
     {
@@ -41,5 +52,10 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(transform.position.x, stageData.LimitMin.x, stageData.LimitMax.x),
             Mathf.Clamp(transform.position.y, stageData.LimitMin.y, stageData.LimitMax.y)
             );
+    }
+
+    public void OnDie()
+    {
+        SceneManager.LoadScene(nextSceneName);
     }
 }

@@ -9,11 +9,16 @@ namespace DefaultNamespace
         [SerializeField] private float maxHp = 10;
         private float currentHp;
         private SpriteRenderer spriteRenderer;
+        private PlayerController playerController;
+        
+        public float MaxHp => maxHp;
+        public float CurrentHp => currentHp;
 
         private void Awake()
         {
             currentHp = maxHp;
             spriteRenderer = GetComponent<SpriteRenderer>();
+            playerController = GetComponent<PlayerController>();
         }
 
         public void TakeDamage(float damage)
@@ -25,7 +30,7 @@ namespace DefaultNamespace
 
             if (currentHp <= 0)
             {
-                print("HP Die");
+                playerController.OnDie();
             }
         }
 
