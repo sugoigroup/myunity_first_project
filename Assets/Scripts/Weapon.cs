@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class Weapon : MonoBehaviour
@@ -7,6 +8,13 @@ public class Weapon : MonoBehaviour
     private GameObject projectilePrefab;
     [SerializeField]
     private float attackRate = 0.1f;
+
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void StartFiring()
     {
@@ -22,6 +30,7 @@ public class Weapon : MonoBehaviour
     {
         while(true)
         {
+            audioSource.Play();
             Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(attackRate);
         }
