@@ -10,10 +10,23 @@ public class Weapon : MonoBehaviour
     private int attackLevel = 1;
 
     private AudioSource audioSource;
+    
+    [SerializeField] private GameObject boomPrefab;
+    private int boomCount = 3;
+    public int BoomCount => boomCount;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    public void StartBoom()
+    {
+        if (boomCount > 0)
+        {
+            boomCount--;
+            Instantiate(boomPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     public void StartFiring()

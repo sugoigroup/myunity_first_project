@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6135633969706619316}
   - component: {fileID: 6135633969706619319}
+  - component: {fileID: 417075088764001157}
   - component: {fileID: 6135633969706619318}
-  - component: {fileID: 6604611248277810533}
   - component: {fileID: 9199258219460290026}
   - component: {fileID: -2386871304872169381}
   m_Layer: 0
   m_Name: Meteorite
-  m_TagString: Untagged
+  m_TagString: Meteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,6 +86,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &417075088764001157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135633969706619313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cda75d15ee4376a71de57cc60660aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  explosionPrefab: {fileID: 6648170469247145492, guid: 65a0f1b493b3646c88d736e87beb5e54, type: 3}
 --- !u!114 &6135633969706619318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,21 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   moveDirection: {x: 0, y: -1, z: 0}
---- !u!114 &6604611248277810533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135633969706619313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9be86c46bef047e8bc3d8e009182909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  scorePoint: 100
-  explosionPrefab: {fileID: 6648170469247145492, guid: 65a0f1b493b3646c88d736e87beb5e54, type: 3}
 --- !u!58 &9199258219460290026
 CircleCollider2D:
   m_ObjectHideFlags: 0
