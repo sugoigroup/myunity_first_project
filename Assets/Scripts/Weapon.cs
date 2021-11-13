@@ -7,14 +7,25 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float attackRate = 0.1f;
 
+    [SerializeField] private int maxAttackLevel = 3;
     private int attackLevel = 1;
 
     private AudioSource audioSource;
     
     [SerializeField] private GameObject boomPrefab;
     private int boomCount = 3;
-    public int BoomCount => boomCount;
+    public int BoomCount
+    {
+        set => boomCount = Mathf.Max(0, value);
+        get => boomCount;
+    }
 
+    public int AttackLevel
+    {
+        set => attackLevel = Mathf.Clamp(value, 1, maxAttackLevel);
+        get => attackLevel;
+    }
+    
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();

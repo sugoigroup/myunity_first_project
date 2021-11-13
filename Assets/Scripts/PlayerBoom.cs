@@ -34,7 +34,7 @@ public class PlayerBoom : MonoBehaviour
             
             
             transform.position = Vector3.Lerp(startPosition, endPosition, curve.Evaluate(percent));
-            print("poopop");
+            //print("poopop");
             yield return null;
         }
 

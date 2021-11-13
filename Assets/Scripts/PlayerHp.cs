@@ -12,7 +12,12 @@ namespace DefaultNamespace
         private PlayerController playerController;
         
         public float MaxHp => maxHp;
-        public float CurrentHp => currentHp;
+
+        public float CurrentHp
+        {
+            set => currentHp = Mathf.Clamp(value, 0, maxHp);
+            get => currentHp;
+        } 
 
         private void Awake()
         {

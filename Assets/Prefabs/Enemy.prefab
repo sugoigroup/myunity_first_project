@@ -145,6 +145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   scorePoint: 100
+  itemPrefabs:
+  - {fileID: 6186503430240416437, guid: ff442937a1c1c4e709a1f86929b83296, type: 3}
+  - {fileID: 9062391216205102522, guid: 15951b59d41674556944a2ab2bcf1d3f, type: 3}
+  - {fileID: 558614391054381222, guid: 64b6c261f95284cc5ac7f73c99d8ed84, type: 3}
   explosionPrefab: {fileID: 6648170469247145492, guid: 65a0f1b493b3646c88d736e87beb5e54, type: 3}
 --- !u!114 &-5456489164776440725
 MonoBehaviour:
