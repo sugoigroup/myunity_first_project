@@ -8,9 +8,12 @@ public class PlayerBoom : MonoBehaviour
     [SerializeField] private AnimationCurve curve;
 
     [SerializeField] private AudioClip boomAudio;
+    [SerializeField] private int damage = 100;
+    
     private float boomDelay = 0.5f;
     private Animator animator;
     private AudioSource audioSource;
+    
 
     private void Awake()
     {
@@ -32,9 +35,7 @@ public class PlayerBoom : MonoBehaviour
             current += Time.deltaTime;
             percent = current / boomDelay;
             
-            
             transform.position = Vector3.Lerp(startPosition, endPosition, curve.Evaluate(percent));
-            //print("poopop");
             yield return null;
         }
 
@@ -56,6 +57,18 @@ public class PlayerBoom : MonoBehaviour
         for (int i = 0; i < meteorites.Length; ++i)
         {
             meteorites[i].GetComponent<Meteorite>().OnDie();
+        }
+
+        GameObject[] projectile = GameObject.FindGameObjectsWithTag("EnemyProjectile");
+        for (int i = 0; i < projectile.Length; ++i)
+        {
+            projectile[i].GetComponent<EnemyProjectile>().OnDie();
+        }
+
+        GameObject boss = GameObject.FindWithTag("Boss");
+        if(boss != null)
+        {
+            boss.GetComponent<BossHp>().TakeDamage(damage);
         }
         
         Destroy(gameObject);
