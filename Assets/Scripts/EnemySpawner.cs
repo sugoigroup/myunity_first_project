@@ -19,10 +19,19 @@ public class EnemySpawner : MonoBehaviour
     
     [SerializeField]
     private Transform canvasTransform;
+    
+    [SerializeField]
+    private BgmController bgmController;
+    [SerializeField]
+    private GameObject textBossWarning;
+    [SerializeField]
+    private GameObject boss;
 
 
     private void Awake()
     {
+        textBossWarning.SetActive(false);
+        boss.SetActive(false);
         StartCoroutine("SpawnEnemy");
 
     }
@@ -58,6 +67,14 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnBoss()
     {
-        yield return null;
+        bgmController.ChangeBgm(BgmType.Boss);
+        textBossWarning.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        
+        textBossWarning.SetActive(false);
+        
+        boss.SetActive(true);
+        boss.GetComponent<Boss>().ChangeState(BossState.MoveToAppearPoint);
+        
     }
 }
