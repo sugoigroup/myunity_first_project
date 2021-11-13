@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private StageData stageData;
     [SerializeField]
     private KeyCode keyCodeAttack = KeyCode.Space;
+    [SerializeField]
+    private KeyCode keyCodeBomb = KeyCode.Z;
 
     private Movement2D movement2D;
     private Weapon weapon;
@@ -48,6 +50,12 @@ public class PlayerController : MonoBehaviour
         } else if (Input.GetKeyUp(keyCodeAttack))
         {
             weapon.StopFiring();
+        }
+        
+        
+        if(Input.GetKeyDown(keyCodeBomb))
+        {
+            weapon.StartBoom();
         }
 
     }

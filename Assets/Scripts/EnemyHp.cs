@@ -4,26 +4,22 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class PlayerHp : MonoBehaviour
+    public class EnemyHp : MonoBehaviour
     {
-        [SerializeField] private float maxHp = 10;
+        [SerializeField] private float maxHp = 4;
         private float currentHp;
         private SpriteRenderer spriteRenderer;
-        private PlayerController playerController;
+        private Enemy enemy;
         
         public float MaxHp => maxHp;
-
-        public float CurrentHp
-        {
-            set => currentHp = Mathf.Clamp(value, 0, maxHp);
-            get => currentHp;
-        } 
+        public float CurrentHp => currentHp;
+        
 
         private void Awake()
         {
             currentHp = maxHp;
             spriteRenderer = GetComponent<SpriteRenderer>();
-            playerController = GetComponent<PlayerController>();
+            enemy = GetComponent<Enemy>();
         }
 
         public void TakeDamage(float damage)
@@ -35,14 +31,14 @@ namespace DefaultNamespace
 
             if (currentHp <= 0)
             {
-                playerController.OnDie();
+                enemy.OnDie();
             }
         }
 
         private IEnumerator HitColorAnimation()
         {
             spriteRenderer.color = Color.red;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
 
             spriteRenderer.color = Color.white;
         }
