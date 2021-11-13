@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     private KeyCode keyCodeAttack = KeyCode.Space;
     [SerializeField]
     private KeyCode keyCodeBomb = KeyCode.Z;
+    [SerializeField]
+    private float speed;
+    
+    private JoyPad joypad;
 
     private Movement2D movement2D;
     private Weapon weapon;
@@ -32,7 +36,34 @@ public class PlayerController : MonoBehaviour
         movement2D = GetComponent<Movement2D>();
         weapon = GetComponent<Weapon>();
         animator = GetComponent<Animator>();
+        
+        joypad = GameObject.FindObjectOfType<JoyPad>();
     }
+
+    private void Start()
+    {
+        
+        weapon.StartFiring(); 
+    }
+
+    private void FixedUpdate()
+    {
+        if (joypad.Horizontal != 0 || joypad.Vertical != 0)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            MoveControl();
+        }
+    }
+
+    private void MoveControl()
+    {
+        transform.position += new Vector3(
+            Time.deltaTime * speed * joypad.Horizontal * 0.01f,
+            Time.deltaTime * speed * joypad.Vertical * 0.01f,
+            0);
+        print(Time.deltaTime * speed * joypad.Horizontal * 0.01f);
+    }
+    
 
     // Update is called once per frame
     void Update()
