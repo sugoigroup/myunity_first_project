@@ -5,23 +5,37 @@ using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace
 {
-    public enum BossState { MoveToAppearPoint = 0, Phase01, }
+    public enum BossState { MoveToAppearPoint = 0, Phase01, Phase02, Phase03, }
     public class Boss : MonoBehaviour
     {
+        [SerializeField] private StageData stageData;
         [SerializeField] private float bossAppearPoint = 2.5f;
+        [SerializeField] private GameObject explosionPrefab;
+        [SerializeField] private PlayerController playerController;
+        [SerializeField] private string nextSceneName;
+        
         private BossState bossState = BossState.MoveToAppearPoint;
         private Movement2D movement2D;
         private BossWeapon bossWeapon;
+        private BossHp bossHp;
 
         private void Awake()
         {
             movement2D = GetComponent<Movement2D>();
             bossWeapon = GetComponent<BossWeapon>();
+            bossHp = GetComponent<BossHp>();
+        }
+
+        public void OnDie()
+        {
+            GameObject clone = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            clone.GetComponent<BossExplosion>().Setup(playerController, nextSceneName);
+            Destroy(gameObject);
         }
 
         public void ChangeState(BossState newState)
         {
-            StartCoroutine(bossState.ToString());
+            StopCoroutine(bossState.ToString());
             bossState = newState;
             StartCoroutine(bossState.ToString());
             
@@ -48,6 +62,64 @@ namespace DefaultNamespace
             bossWeapon.StartFiring(AttackType.CircleFire);
             while (true)
             {
+                if (bossHp.CurrentHp <= bossHp.MaxHp * 0.7f)
+                {
+                    bossWeapon.StopFiring(AttackType.CircleFire);
+                    ChangeState(BossState.Phase02);
+                }
+                yield return null;
+            }
+        }
+
+        private IEnumerator Phase02()
+        {
+            bossWeapon.StartFiring(AttackType.SingleFireToCenterPosition);
+            
+            Vector3 direction = Vector3.right;
+            movement2D.MoveTo(direction);
+            while (true)
+            {
+                if (transform.position.x <= stageData.LimitMin.x ||
+                    transform.position.x >= stageData.LimitMax.x 
+                )
+                {
+                    transform.position = new Vector3(
+                        Mathf.Clamp(transform.position.x, stageData.LimitMin.x, stageData.LimitMax.x), 
+                        transform.position.y);
+                    
+                    direction *= -1;
+                    movement2D.MoveTo(direction);
+                }
+                
+                if (bossHp.CurrentHp <= bossHp.MaxHp * 0.3f)
+                {
+                    bossWeapon.StopFiring(AttackType.CircleFire);
+                    ChangeState(BossState.Phase03);
+                }
+                yield return null;
+            }
+        }
+        private IEnumerator Phase03()
+        {
+            bossWeapon.StartFiring(AttackType.CircleFire);
+            bossWeapon.StartFiring(AttackType.SingleFireToCenterPosition);
+            
+            Vector3 direction = Vector3.right;
+            movement2D.MoveTo(direction);
+            while (true)
+            {
+                if (transform.position.x <= stageData.LimitMin.x ||
+                    transform.position.x >= stageData.LimitMax.x 
+                )
+                {
+
+                    transform.position = new Vector3(
+                        Mathf.Clamp(transform.position.x, stageData.LimitMin.x, stageData.LimitMax.x), 
+                        transform.position.y);
+                    
+                    direction *= -1;
+                    movement2D.MoveTo(direction);
+                }
                 yield return null;
             }
         }

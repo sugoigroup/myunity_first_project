@@ -25,12 +25,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject textBossWarning;
     [SerializeField]
+    private GameObject panelBossHp;
+    [SerializeField]
     private GameObject boss;
 
 
     private void Awake()
     {
         textBossWarning.SetActive(false);
+        panelBossHp.SetActive(false);
         boss.SetActive(false);
         StartCoroutine("SpawnEnemy");
 
@@ -74,6 +77,7 @@ public class EnemySpawner : MonoBehaviour
         textBossWarning.SetActive(false);
         
         boss.SetActive(true);
+        panelBossHp.SetActive(true);
         boss.GetComponent<Boss>().ChangeState(BossState.MoveToAppearPoint);
         
     }

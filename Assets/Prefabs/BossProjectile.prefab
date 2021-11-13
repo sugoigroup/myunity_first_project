@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 322662239382027326}
   m_Layer: 0
   m_Name: BossProjectile
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: c238b8cde07264341a7938335e8b02c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  explosionPrefab: {fileID: 6648170469247145492, guid: 65a0f1b493b3646c88d736e87beb5e54, type: 3}
 --- !u!114 &322662239382027326
 MonoBehaviour:
   m_ObjectHideFlags: 0
