@@ -506,6 +506,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364359fa2af6403fbbe8ee741420a565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 956982453}
+  sceneType: 0
 --- !u!114 &956982453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,19 +551,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 956982454}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 956982452}
-        m_TargetAssemblyTypeName: DefaultNamespace.ButtonEvent, Assembly-CSharp
-        m_MethodName: SceneLoader
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Intro
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &956982454
 MonoBehaviour:
   m_ObjectHideFlags: 0

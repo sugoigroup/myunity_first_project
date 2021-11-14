@@ -1,13 +1,26 @@
+using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
     public class ButtonEvent : MonoBehaviour
     {
-        public void SceneLoader(string sceneName)
+        [SerializeField] private Button button;
+        [SerializeField] private SceneType sceneType;
+
+        private void Start()
         {
-            SceneManager.LoadScene(sceneName);
+            button.onClick
+                .AsObservable()
+                .Subscribe(_ =>
+                    {
+                        SceneManager.LoadScene(sceneType.ToString());
+                    }
+                );
         }
     }
 }
