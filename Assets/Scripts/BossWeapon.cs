@@ -22,7 +22,7 @@ namespace DefaultNamespace
         private IEnumerator CircleFire()
         {
             float attackRate = 0.5f;
-            int count = 30;
+            int count = 15;
             float intervalAngle = 360 / count;
             float weightAngle = 0;
 
@@ -45,7 +45,9 @@ namespace DefaultNamespace
         private IEnumerator SingleFireToCenterPosition()
         {
             Vector3 targetPosition = Vector3.zero;
-            float attackRate = 0.1f;
+            float attackRate = 0.2f;
+            int bossCoffeTime = 15;
+            int gunCount = 0;
 
             while (true)
             {
@@ -54,6 +56,17 @@ namespace DefaultNamespace
                     Vector3 direction = (targetPosition - clone.transform.position).normalized;
                     
                     clone.GetComponent<Movement2D>().MoveTo(direction);
+
+                    gunCount++;
+                    if (bossCoffeTime < gunCount)
+                    {
+                        gunCount = 0;
+                        attackRate = 1f;
+                    }
+                    else
+                    {
+                        attackRate = 0.2f;
+                    }
              
                 yield return new WaitForSeconds(attackRate);
             }
