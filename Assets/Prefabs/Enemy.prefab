@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2009563298900659379}
   - component: {fileID: 2009563298900659378}
   - component: {fileID: 2064272711941883121}
-  - component: {fileID: -1870483264263562754}
   - component: {fileID: -7292844665343364560}
   - component: {fileID: -5456489164776440725}
   - component: {fileID: 8324070413189902288}
@@ -22,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2009563298900659376
 Transform:
   m_ObjectHideFlags: 0
@@ -100,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e06cfbb45b94f52a406e2c89e18617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 0.5
   moveDirection: {x: 0, y: -1, z: 0}
 --- !u!58 &2064272711941883121
 CircleCollider2D:
@@ -118,19 +117,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
---- !u!114 &-1870483264263562754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009563298900659381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8560358e2db14f29954554a448299079, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 4
 --- !u!114 &-7292844665343364560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9be86c46bef047e8bc3d8e009182909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: -1
   scorePoint: 100
   itemPrefabs:
   - {fileID: 6186503430240416437, guid: ff442937a1c1c4e709a1f86929b83296, type: 3}

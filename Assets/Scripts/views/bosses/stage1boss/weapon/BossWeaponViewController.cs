@@ -1,0 +1,96 @@
+using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace DefaultNamespace
+{
+    public enum AttackType
+    {
+        CircleFire = 0,
+        SingleFireToCenterPosition,
+    }
+
+    public class BossWeaponViewController : MonoBehaviour
+    {
+        [SerializeField] private GameObject projectilePrefab;
+        private BossWeaponView _bossWeaponView;
+        private int _owenerGameObjectId;
+
+        private void Awake()
+        {
+            projectilePrefab.GetComponent<BossWeaponView>();
+        }
+
+        public void StartFiring(AttackType attackType)
+        {
+            
+            StartCoroutine(attackType.ToString());
+        }
+
+        public void StopFiring(AttackType attackType)
+        {
+            StopCoroutine(attackType.ToString());
+        }
+
+        private IEnumerator CircleFire()
+        {
+            float attackRate = 0.5f;
+            int count = 15;
+            float intervalAngle = 360 / count;
+            float weightAngle = 0;
+
+            while (true)
+            {
+                for (int i = 0; i < count; ++i)
+                {
+                    GameObject clone = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                    float angle = weightAngle + intervalAngle * i;
+
+                    float x = Mathf.Cos(angle * Mathf.PI / 180.0f);
+                    float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
+
+                    clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
+                }
+
+                weightAngle += 1;
+                yield return new WaitForSeconds(attackRate);
+            }
+        }
+
+        private IEnumerator SingleFireToCenterPosition()
+        {
+            Vector3 targetPosition = Vector3.zero;
+            float attackRate = 0.2f;
+            int bossCoffeTime = 15;
+            int gunCount = 0;
+
+            while (true)
+            {
+                GameObject clone = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+                Vector3 direction = (targetPosition - clone.transform.position).normalized;
+
+                clone.GetComponent<Movement2D>().MoveTo(direction);
+
+                gunCount++;
+                if (bossCoffeTime < gunCount)
+                {
+                    gunCount = 0;
+                    attackRate = 1f;
+                }
+                else
+                {
+                    attackRate = 0.2f;
+                }
+
+                yield return new WaitForSeconds(attackRate);
+            }
+        }
+        
+        public void setOwenerGameObjectId(int owenerGameObjectId)
+        { 
+            _owenerGameObjectId = owenerGameObjectId;
+        }
+    }
+}

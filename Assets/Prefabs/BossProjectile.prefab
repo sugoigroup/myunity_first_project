@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8854028521391951236}
   - component: {fileID: 3215741642724200563}
   - component: {fileID: 322662239382027326}
+  - component: {fileID: 3465157013116919550}
+  - component: {fileID: 4681442836726963870}
   m_Layer: 0
   m_Name: BossProjectile
   m_TagString: EnemyProjectile
@@ -150,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20348e7091d94e82ad53c7a8c2c682b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: -1
   explosionPrefab: {fileID: 6648170469247145492, guid: 65a0f1b493b3646c88d736e87beb5e54, type: 3}
 --- !u!114 &322662239382027326
 MonoBehaviour:
@@ -165,3 +167,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: a89a3bc51e06540cda4b7e81f5092be5, type: 2}
+--- !u!114 &3465157013116919550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893831364823920268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93694f084a994baf8f4011a767e5b6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 4893831364823920268}
+  _bossWeaponView: {fileID: 4681442836726963870}
+--- !u!114 &4681442836726963870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893831364823920268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da7af95ce3428ebb2cfbe75e4f3117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

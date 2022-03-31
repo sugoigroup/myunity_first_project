@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2330629638349516518}
   - component: {fileID: 2330629638349516516}
   - component: {fileID: 7634291924013904131}
+  - component: {fileID: -233072394848319376}
   - component: {fileID: 3292674937070409791}
   m_Layer: 0
   m_Name: PlayerBoom
@@ -140,7 +141,22 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  boomAudio: {fileID: 8300000, guid: 70a92461a2d21a443850341012eb9b55, type: 3}
+  bombAudio: {fileID: 8300000, guid: ef43e1ee1c20aed42a133493f8f3cb99, type: 3}
+--- !u!114 &-233072394848319376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330629638349516519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714f59d9effc4a708836c1e2252c3904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerBombView: {fileID: 7634291924013904131}
+  damage: 10000
+  bombDelay: 0.5
 --- !u!82 &3292674937070409791
 AudioSource:
   m_ObjectHideFlags: 0

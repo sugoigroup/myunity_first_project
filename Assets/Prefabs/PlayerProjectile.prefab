@@ -13,15 +13,16 @@ GameObject:
   - component: {fileID: 1173117201287500602}
   - component: {fileID: -5334984659564750525}
   - component: {fileID: 277982111407593504}
-  - component: {fileID: -2259366517754387687}
   - component: {fileID: -5970763111722518529}
+  - component: {fileID: 8201884713837173258}
+  - component: {fileID: 8940810085332768318}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1173117201287500600
 Transform:
   m_ObjectHideFlags: 0
@@ -138,18 +139,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2259366517754387687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173117201287500603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 946c3d45b2aef446cac309d6c4d10def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-5970763111722518529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +152,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: a89a3bc51e06540cda4b7e81f5092be5, type: 2}
+--- !u!114 &8201884713837173258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173117201287500603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f008fe0caed64f78ad36bdf6b72e94c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8940810085332768318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173117201287500603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 946c3d45b2aef446cac309d6c4d10def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileView: {fileID: 8201884713837173258}
+  damage: -1
